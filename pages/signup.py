@@ -4,23 +4,35 @@ from utils.auth_db import create_user, AuthError
 
 register_page(__name__, path="/signup", name="Sign up")
 
-layout = html.Div(id="signup-page", children=[
-    dcc.Location(id="signup-redirect"),
-    html.H2("Create an account"),
-    html.Div(className="controls", children=[
-        html.Div(className="control", children=[html.Label("Username"),
-            dcc.Input(id="su-username", type="text", placeholder="pick a username")]),
-        html.Div(className="control", children=[html.Label("Date of Birth"),
-            dcc.DatePickerSingle(id="su-dob", display_format="YYYY-MM-DD")]),
-        html.Div(className="control", children=[html.Label("Password"),
-            dcc.Input(id="su-pass1", type="password", placeholder="••••••••")]),
-        html.Div(className="control", children=[html.Label("Confirm Password"),
-            dcc.Input(id="su-pass2", type="password", placeholder="••••••••")]),
-        html.Button("Create account", id="su-btn"),
-        dcc.Link("Have an account? Sign in", href="/login"),
-    ]),
-    html.Div(id="signup-msg"),
-])
+layout = html.Div(
+    id="signup-page",
+    className="page auth-page",
+    children=[
+        dcc.Location(id="signup-redirect"),
+        html.H2("Create an account"),
+        html.Div(
+            className="controls auth-form",
+            children=[
+                html.Div(className="control", children=[html.Label("Username"), dcc.Input(id="su-username", type="text")]),
+                html.Div(
+                    className="control",
+                    children=[html.Label("Date of Birth"), dcc.DatePickerSingle(id="su-dob", display_format="MM-DD-YYYY")],
+                ),
+                html.Div(className="control", children=[html.Label("Password"), dcc.Input(id="su-pass1", type="password")]),
+                html.Div(
+                    className="control",
+                    children=[html.Label("Confirm Password"), dcc.Input(id="su-pass2", type="password")],
+                ),
+                html.Div(className="auth-actions", children=[html.Button("Create account", id="su-btn", className="btn")]),
+                html.Div(
+                    className="auth-switch",
+                    children=["Already have an account? ", dcc.Link("Sign in", href="/login", className="link-inline")],
+                ),
+            ],
+        ),
+        html.Div(id="signup-msg", className="auth-msg"),
+    ],
+)
 
 @callback(
     Output("signup-msg", "children"),
@@ -42,4 +54,4 @@ def do_signup(n, username, dob, p1, p2):
     except AuthError as e:
         return str(e), None
     session["user"] = (username or "").strip()
-    return "Account created.", "/home"
+    return "Account created.", "/dashboard"
