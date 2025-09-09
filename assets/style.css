@@ -43,7 +43,7 @@ body{
   align-items: center;
   gap: 12px;
 }
-.logo{ width: 36px; height: 36px; display:block; }
+.logo{ width: 36px; height: 36px; display:block;}
 .navbar{ display:flex; gap:10px; flex-wrap:wrap; }
 .nav-link, .btn{
   display:inline-block; padding:8px 12px;

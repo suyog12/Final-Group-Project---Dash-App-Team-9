@@ -70,7 +70,7 @@ def layout():
                         children=[
                             dcc.Graph(
                                 id="rk-chart",
-                                config={"displayModeBar": True},
+                                config={"displayModeBar": "hover"},
                                 style={"height": "72vh"},
                             )
                         ],
@@ -110,14 +110,14 @@ def update_chart(ticker, start_date, end_date):
         open=df["open"], high=df["high"], low=df["low"], close=df["close"],
         name=ticker,
         whiskerwidth=0.45,
-        increasing=dict(line=dict(color="#2e8b57", width=1.6)),
-        decreasing=dict(line=dict(color="#c23b22", width=1.6)),
+        increasing=dict(line=dict(color="#026633", width=1.6)),
+        decreasing=dict(line=dict(color="#bf0940", width=1.6)),
         showlegend=True,
     )
     ma20 = go.Scatter(x=df["date"], y=df["MA20"], mode="lines", name="MA 20",
-                      line=dict(width=2.0, color="#1f77b4"))
+                      line=dict(width=2.0, color="#472bbd"))
     ma50 = go.Scatter(x=df["date"], y=df["MA50"], mode="lines", name="MA 50",
-                      line=dict(width=2.0, color="#ff7f0e"))
+                      line=dict(width=2.0, color="#0a80ed"))
 
     fig = go.Figure(data=[candle, ma20, ma50])
     fig.update_layout(

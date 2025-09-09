@@ -36,7 +36,7 @@ _page = html.Div(
         html.Section(id="hq-header", children=[html.H2("If you invested $100…")]),
         html.Section(
             id="hq-body",
-            children=[html.Aside(id="hq-sidebar", children=[controls]), html.Section(id="hq-content", children=[dcc.Graph(id="hq-chart")])],
+            children=[html.Aside(id="hq-sidebar", children=[controls]), html.Section(id="hq-content", children=[dcc.Graph(id="hq-chart", config={"displayModeBar": "hover"})])],
         ),
     ],
 )
@@ -59,8 +59,9 @@ def update_chart(tickers, start_date, end_date, log_value):
     df = NORM[NORM["symbol"].isin(tickers)]
     if start_date and end_date:
         df = df[(df["date"] >= pd.to_datetime(start_date)) & (df["date"] <= pd.to_datetime(end_date))]
-    fig = px.line(df, x="date", y="norm", color="symbol", labels={"norm": "Index ($100 start)"})
-    fig.update_layout(hovermode="x unified", legend_title_text="Ticker")
+    custom_colors = ["#2964b4", "#b24b7b"] # changes the colors of the graph
+    fig = px.line(df, x="date", y="norm", color="symbol", labels={"norm": "Index ($100 start)"}, color_discrete_sequence=custom_colors)
+    fig.update_layout(hovermode="x unified", legend_title_text="Ticker", template="plotly_white")
     fig.update_xaxes(rangeslider_visible=True)
     if "log" in (log_value or []):
         fig.update_yaxes(type="log")

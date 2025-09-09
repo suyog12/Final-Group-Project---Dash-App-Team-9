@@ -58,7 +58,7 @@ _page = html.Div(id="vol-page", children=[
     html.Section(id="vol-body", children=[
         html.Aside(id="vol-sidebar", children=[controls]),
         html.Section(id="vol-content", children=[
-            dcc.Graph(id="vol-chart", config={"displayModeBar": True}, style={"height": "72vh"}),
+            dcc.Graph(id="vol-chart", config={"displayModeBar": "hover"}, style={"height": "72vh"}),
         ]),
     ]),
 ])
@@ -99,17 +99,18 @@ def update_vol_chart(tickers, start_date, end_date, window):
           .reset_index(level=0, drop=True) * ann
     )
     vol = df.dropna(subset=["roll_vol"])[["date", "symbol", "roll_vol"]]
-
+    
+    custom_colors = ["#2964b4", "#b24b7b"] # changes the colors of the graph
     fig = px.area(
         vol, x="date", y="roll_vol", color="symbol",
         labels={"roll_vol": "Annualized Volatility", "date": "date", "symbol": "Ticker"},
-        template="plotly_white",
+        template="plotly_white", color_discrete_sequence=custom_colors,
     )
     fig.update_layout(
         title="Rolling Volatility",
         hovermode="x unified",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
-        margin=dict(l=40, r=20, t=50, b=40),
+        margin=dict(l=40, r=20, t=85, b=40),
     )
     fig.update_yaxes(tickformat=".0%")
     fig.update_xaxes(rangeslider_visible=True)
