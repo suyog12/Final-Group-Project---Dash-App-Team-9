@@ -5,34 +5,82 @@ from utils.auth_db import create_user, AuthError
 register_page(__name__, path="/signup", name="Sign up")
 
 layout = html.Div(
-    id="signup-page",
-    className="page auth-page",
+    className="auth-shell",
     children=[
         dcc.Location(id="signup-redirect"),
-        html.H2("Create an account"),
         html.Div(
-            className="controls auth-form",
+            className="auth-card",
             children=[
-                html.Div(className="control", children=[html.Label("Username"), dcc.Input(id="su-username", type="text")]),
+                html.H2("Create an account", className="auth-title"),
+                html.P("Join in seconds. You’ll be redirected to your dashboard after sign-up.", className="auth-subtitle"),
+                html.Div(id="signup-msg", className="auth-msg"),
+
                 html.Div(
-                    className="control",
-                    children=[html.Label("Date of Birth"), dcc.DatePickerSingle(id="su-dob", display_format="MM-DD-YYYY")],
+                    className="form-grid",
+                    children=[
+                        html.Div(
+                            className="form-group",
+                            children=[
+                                html.Label("Username", htmlFor="su-username"),
+                                dcc.Input(
+                                    id="su-username",
+                                    type="text",
+                                    placeholder="pick a username",
+                                    className="form-input",
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="form-group",
+                            children=[
+                                html.Label("Date of Birth", htmlFor="su-dob"),
+                                dcc.DatePickerSingle(
+                                    id="su-dob",
+                                    display_format="YYYY-MM-DD",
+                                    className="date-input",
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="form-group",
+                            children=[
+                                html.Label("Password", htmlFor="su-pass1"),
+                                dcc.Input(
+                                    id="su-pass1",
+                                    type="password",
+                                    placeholder="••••••••",
+                                    className="form-input",
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="form-group",
+                            children=[
+                                html.Label("Confirm Password", htmlFor="su-pass2"),
+                                dcc.Input(
+                                    id="su-pass2",
+                                    type="password",
+                                    placeholder="••••••••",
+                                    className="form-input",
+                                ),
+                            ],
+                        ),
+                    ],
                 ),
-                html.Div(className="control", children=[html.Label("Password"), dcc.Input(id="su-pass1", type="password")]),
-                html.Div(
-                    className="control",
-                    children=[html.Label("Confirm Password"), dcc.Input(id="su-pass2", type="password")],
-                ),
-                html.Div(className="auth-actions", children=[html.Button("Create account", id="su-btn", className="btn")]),
+
+                html.Button("Create account", id="su-btn", className="auth-button"),
                 html.Div(
                     className="auth-switch",
-                    children=["Already have an account? ", dcc.Link("Sign in", href="/login", className="link-inline")],
+                    children=[
+                        "Already have an account? ",
+                        dcc.Link("Sign in", href="/login"),
+                    ],
                 ),
             ],
         ),
-        html.Div(id="signup-msg", className="auth-msg"),
     ],
 )
+
 
 @callback(
     Output("signup-msg", "children"),
@@ -46,12 +94,15 @@ layout = html.Div(
 )
 def do_signup(n, username, dob, p1, p2):
     if not username or not dob or not p1 or not p2:
-        return "All fields are required.", None
+        return html.Div("All fields are required.", className="alert danger"), None
     if p1 != p2:
-        return "Passwords do not match.", None
+        return html.Div("Passwords do not match.", className="alert danger"), None
+
     try:
         create_user(username, p1, dob)
     except AuthError as e:
-        return str(e), None
+        return html.Div(str(e), className="alert danger"), None
+
+    # auto-login on successful sign-up
     session["user"] = (username or "").strip()
-    return "Account created.", "/dashboard"
+    return html.Div("Account created!", className="alert success"), "/dashboard"
