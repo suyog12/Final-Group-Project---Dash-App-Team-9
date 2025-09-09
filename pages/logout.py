@@ -5,4 +5,4 @@ register_page(__name__, path="/logout", name="Sign out")
 
 def layout():
     session.pop("user", None)
-    return dcc.Location(pathname="/login", id="logout-redirect")
+    return dcc.Location(pathname="/", id="logout-redirect")
