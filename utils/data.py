@@ -1,13 +1,8 @@
-# utils/data.py
 import os
-from datetime import datetime
 import pandas as pd
-
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except Exception:
-    pass
+from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE = "https://www.alphavantage.co/query"
 API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", "")
@@ -22,16 +17,12 @@ def _cache_path(symbol: str) -> str:
     return os.path.join(CACHE_DIR, f"{symbol}_daily.csv")
 
 def fetch_daily(symbol: str, force: bool = False) -> pd.DataFrame:
-    """Fetch full daily data, cache to CSV; if no key, try cache first."""
+    """Fetch full daily data for a symbol. Cache to CSV to avoid API limits."""
     cp = _cache_path(symbol)
-
-    # if not forcing and cache exists, use it (works offline / no key)
     if not force and os.path.exists(cp):
         return pd.read_csv(cp, parse_dates=["date"])
-
     if not API_KEY:
         raise DataError("Missing ALPHAVANTAGE_API_KEY env var and no cache found.")
-
     url = (
         f"{BASE}?function=TIME_SERIES_DAILY&symbol={symbol}"
         f"&outputsize=full&datatype=csv&apikey={API_KEY}"
