@@ -1,0 +1,246 @@
+/* ====== Theme tokens ====== */
+:root{
+  --bg: #e7efe9;          /* mint paper background */
+  --paper: #ffffff;       /* card surface */
+  --ink: #1e2329;         /* main text */
+  --muted: #56626d;       /* secondary text */
+  --accent: #7fae9d;      /* tab fill */
+  --accent-dk: #6aa391;   /* tab hover/border */
+  --link: #2a6f97;        /* primary action */
+  --ring: rgba(0,0,0,0.06); /* soft shadow */
+}
+
+/* ====== Reset / base ====== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====== Page shell ====== */
+.container{
+  width: min(96vw, 1600px);     /* fill big screens, cap for readability */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page, .page-container > *{
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px var(--ring);
+  padding: 16px;
+}
+
+/* ====== Header ====== */
+.header{
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px var(--ring);
+  padding: 18px 18px 8px;
+  margin-bottom: 16px;
+}
+.header h1{
+  margin: 0 0 6px;
+  font-size: 2rem;
+  letter-spacing: .2px;
+}
+.header p{
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+/* ====== Header Style ====== */
+/* ====== Nav “tabs” ====== */
+.navbar{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  align-items: center;
+  margin: 0;
+}
+.nav-link{
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #0f1a17;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--accent-dk);
+  font-weight: 600;
+  line-height: 1;
+}
+.nav-link:hover{ filter: brightness(0.97); }
+.nav-link:focus{ outline: 3px solid rgba(42,111,151,.25); outline-offset: 2px; }
+
+/* Generic button */
+.btn{
+  display: inline-block;
+  padding: 8px 12px;
+  background: var(--link);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover{ filter: brightness(.95); }
+
+/* ====== Home Intro ====== */
+.column {
+  float: left;
+  width: 50%;
+}
+
+#home-intro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#title {
+  font-size: x-large;
+}
+
+#title h3{
+  color: gray;
+}
+
+#arrow {
+  width: 75%;
+}
+
+/* ====== Home cards ====== */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+.card{
+  border: 1px solid #e6e8eb;
+  border-radius: 12px;
+  padding: 14px;
+}
+.card h3{ margin: 4px 0 6px; }
+.card p{ margin: 0 0 8px; color: var(--muted); }
+
+/* ====== Analysis pages (2-column) ====== */
+#hq-body, #rk-body{
+  display: grid;
+  grid-template-columns: 340px 1fr;   /* sidebar + main graph */
+  gap: 18px;
+  align-items: start;
+  margin-top: 8px;
+}
+#hq-sidebar, #rk-sidebar{
+  background: #f9fbfa;
+  border: 1px solid #e6e8eb;
+  border-radius: 12px;
+  padding: 12px;
+  position: sticky; top: 84px;   /* keep filters visible while scrolling */
+}
+#hq-content, #rk-content{
+  background: #fff;
+  border: 1px solid #eef0f2;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+/* Controls block */
+.controls, #hq-controls, #rk-controls{
+  display: grid;
+  gap: 10px;
+}
+.control label, label{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #3a424a;
+}
+#hq-tickers{
+  accent-color: var(--accent);
+}
+/* Analysis block */
+/* want column inside sidebar
+.analysis #hq-controls, #rk-controls{
+  display: grid;
+  gap: 10px;
+}
+.analysis label, label{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #3a424a;
+} */
+
+/* ====== Date Picker Style ======  */
+
+.DateRangePickerInput{
+  background: #fbfbfb;
+  border: none;
+  width: auto;
+}
+
+.DateRangePickerInput_arrow_svg {
+  width: 50%;
+  margin-left: 6px;
+}
+
+.DateInput_input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #6e897f;
+  background: #ffffff;
+}
+
+/* ====== Ticker Dropdown Style ====== 
+#rk-ticker {
+  border: 1px solid #6e897f;
+}
+*/
+/* ====== Graph sizing – tall & readable ====== */
+.dash-graph, .js-plotly-plot{ width: 100% !important; }
+#hq-chart, #rk-chart{ height: 72vh; }          /* fill most of the viewport */
+.full-height-graph{ height: 72vh; }             /* optional helper class */
+
+/* ====== Footer ====== */
+.footer{
+  color: var(--muted);
+  font-size: 12px;
+  padding: 10px 4px;
+  margin-top: 14px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 980px){
+  #hq-body, #rk-body{ grid-template-columns: 1fr; }
+  #hq-sidebar, #rk-sidebar{ position: static; }
+}
+
+/* ====== Accessibility niceties ====== */
+a { color: var(--link); }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid rgba(42,111,151,.35); outline-offset: 2px; }
+
+/* ======= Login Button ========= */
+#login-btn{
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #0f1a17;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--accent-dk);
+  font-weight: 600;
+  line-height: 1;
+}
+#login-btn:hover{ filter: brightness(0.97); }
+#login-btn:focus{ outline: 3px solid rgba(42,111,151,.25); outline-offset: 2px; }

@@ -1,0 +1,38 @@
+﻿# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+
+# --- Virtual envs ---
+.venv/
+venv/
+env/
+
+# --- Secrets / env vars ---
+.env
+.env.*
+*.secret*
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Tests / coverage ---
+.pytest_cache/
+.mypy_cache/
+.coverage*
+
+# --- Build artifacts ---
+build/
+dist/
+
+# --- App data / local artifacts ---
+data_cache/
+prices_aapl_msft.html
+vol_aapl_msft.html
