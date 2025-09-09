@@ -19,11 +19,16 @@ controls = html.Div(id="hq-controls", children=[
             min_date_allowed=NORM["date"].min(),
             max_date_allowed=NORM["date"].max(),
             start_date=NORM["date"].min(), end_date=NORM["date"].max(),
-            display_format="YYYY-MM-DD")]),
+            display_format="MM-DD-YYYY")]),
     html.Div(className="control", children=[
         dcc.Checklist(id="hq-log", options=[{"label": "Log scale", "value": "log"}], value=[], inline=True),
-    ]),
+    ])
 ])
+
+# analysis = html.Div(id="hq-controls", children=[
+#     html.Div(className="analysis", children=[html.Label("Analysis"),
+#         html.P("Hullo")])
+# ])
 
 _page = html.Div(id="hq-page", children=[
     html.Section(id="hq-header", children=[
@@ -32,6 +37,7 @@ _page = html.Div(id="hq-page", children=[
     ]),
     html.Section(id="hq-body", children=[
         html.Aside(id="hq-sidebar", children=[controls]),
+        # html.Aside(id="hq-sidebar", children=[analysis]),
         html.Section(id="hq-content", children=[dcc.Graph(id="hq-chart", config={"displayModeBar": False})]),
     ]),
 ])

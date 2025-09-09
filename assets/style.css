@@ -54,13 +54,16 @@ body{
   color: var(--muted);
 }
 
+/* ====== Header Style ====== */
 /* ====== Nav “tabs” ====== */
 .navbar{
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   padding-top: 6px;
+  padding-bottom: 6px;
   align-items: center;
+  margin: 0;
 }
 .nav-link{
   display: inline-block;
@@ -87,6 +90,30 @@ body{
   font-weight: 600;
 }
 .btn:hover{ filter: brightness(.95); }
+
+/* ====== Home Intro ====== */
+.column {
+  float: left;
+  width: 50%;
+}
+
+#home-intro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#title {
+  font-size: x-large;
+}
+
+#title h3{
+  color: gray;
+}
+
+#arrow {
+  width: 75%;
+}
 
 /* ====== Home cards ====== */
 .cards{
@@ -137,16 +164,48 @@ body{
   margin-bottom: 4px;
   color: #3a424a;
 }
+#hq-tickers{
+  accent-color: var(--accent);
+}
+/* Analysis block */
+/* want column inside sidebar
+.analysis #hq-controls, #rk-controls{
+  display: grid;
+  gap: 10px;
+}
+.analysis label, label{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #3a424a;
+} */
 
-/* Date inputs */
-.DateRangePicker, .DateInput, .DateInput_input{ width: 100%; }
-.DateInput_input{
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #d9dee3;
-  background: #fff;
+/* ====== Date Picker Style ======  */
+
+.DateRangePickerInput{
+  background: #fbfbfb;
+  border: none;
+  width: auto;
 }
 
+.DateRangePickerInput_arrow_svg {
+  width: 50%;
+  margin-left: 6px;
+}
+
+.DateInput_input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #6e897f;
+  background: #ffffff;
+}
+
+/* ====== Ticker Dropdown Style ====== 
+#rk-ticker {
+  border: 1px solid #6e897f;
+}
+*/
 /* ====== Graph sizing – tall & readable ====== */
 .dash-graph, .js-plotly-plot{ width: 100% !important; }
 #hq-chart, #rk-chart{ height: 72vh; }          /* fill most of the viewport */
@@ -170,3 +229,18 @@ body{
 a { color: var(--link); }
 a:hover { text-decoration: underline; }
 :focus-visible { outline: 3px solid rgba(42,111,151,.35); outline-offset: 2px; }
+
+/* ======= Login Button ========= */
+#login-btn{
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #0f1a17;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--accent-dk);
+  font-weight: 600;
+  line-height: 1;
+}
+#login-btn:hover{ filter: brightness(0.97); }
+#login-btn:focus{ outline: 3px solid rgba(42,111,151,.25); outline-offset: 2px; }

@@ -3,8 +3,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from flask import session
-from dash import Dash, html, dcc
 import dash
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
 from utils.db import init_db
 
 app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True, title="$100 Question")
@@ -21,10 +22,10 @@ def make_header():
     user = session.get("user")
     if user:
         nav = [
-            dcc.Link("Home", href="/home", className="nav-link"),
+            dcc.Link("Company Name", href="/home", className="nav-link"),
+            html.Span(style={"flex": "1"}),
             dcc.Link("The $100 Question", href="/hundred", className="nav-link"),
             dcc.Link("Running the Risks", href="/risks", className="nav-link"),
-            html.Span(style={"flex": "1"}),
             html.Span(f"Signed in as {user}"),
             dcc.Link("Log out", href="/logout", className="nav-link"),
         ]
@@ -34,8 +35,8 @@ def make_header():
             dcc.Link("Sign up", href="/signup", className="nav-link"),
         ]
     return html.Header(className="header", children=[
-        html.H1("The $100 Question"),
-        html.P("What if you invested $100 in Apple and Microsoft? Explore growth and risk with simple, interactive charts."),
+        #html.H1("The $100 Question"),
+        #html.P("What if you invested $100 in Apple and Microsoft? Explore growth and risk with simple, interactive charts."),
         html.Nav(className="navbar", children=nav),
     ])
 
@@ -48,4 +49,4 @@ app.layout = lambda: html.Div(className="container", children=[
 ])
 
 if __name__ == "__main__":
-    app.run_server(debug=True, host="127.0.0.1", port=8050)
+    app.run(debug=True, host="127.0.0.1", port=8050)

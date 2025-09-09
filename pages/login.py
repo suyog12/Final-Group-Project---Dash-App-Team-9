@@ -18,7 +18,7 @@ layout = html.Div(id="login-page", children=[
             dcc.Input(id="login-pass", type="password", placeholder="••••••••"),
         ]),
         html.Button("Sign in", id="login-btn"),
-        dcc.Link("Create an account", href="/signup")
+        #dcc.Link("Create an account", href="/signup")
     ]),
     html.Div(id="login-msg")
 ])

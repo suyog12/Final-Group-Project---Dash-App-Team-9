@@ -51,7 +51,7 @@ _page = html.Div(id="rk-page", children=[
     html.Section(id="rk-body", children=[
         html.Aside(id="rk-sidebar", children=[controls]),
         html.Section(id="rk-content", children=[
-            dcc.Graph(id="rk-chart", config={"displayModeBar": True}, style={"height": "72vh"}),
+            dcc.Graph(id="rk-chart", config={"displayModeBar": "hover"}, style={"height": "72vh"}),
         ]),
     ]),
 ])
@@ -120,9 +120,10 @@ def update_chart(ticker, start_date, end_date):
     fig.update_layout(
         template="plotly_white",
         title=f"{ticker} — Daily Candlestick (last ~2 months by default)",
+        title_y=0.97,  # Position near the top
         hovermode="x unified",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
-        margin=dict(l=40, r=20, t=50, b=40),
+        margin=dict(l=40, r=20, t=70, b=40),
         xaxis=dict(
             type="date",
             rangeslider=dict(visible=True, thickness=0.08),
