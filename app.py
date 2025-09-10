@@ -24,13 +24,22 @@ def header():
     # Logo (acts as home before login, dashboard after login)
     home_target = "/dashboard" if user else "/home"
     logo = dcc.Link(
-        html.Img(
-            src="/assets/images/company-logo.svg",
-            className="logo",
-            alt="Company logo"
+        html.Div([
+            html.Img(
+                src="/assets/images/company-logo.svg",
+                className="logo",
+                alt="Company logo",
+            ),
+            html.Span(
+                "A9 Solutions",
+                className="brand-text",
+                style={"fontWeight": 700, "fontSize": "18px", "color": "#56626d"},
+            ), 
+        ], style={"display": "flex", "alignItems": "center", "gap": "10px"},
         ),
         href=home_target,
-        className="logo-link"
+        className="logo-link",
+        style={"text-decoration":"none"}
     )
 
     # Left nav (only when authenticated)
