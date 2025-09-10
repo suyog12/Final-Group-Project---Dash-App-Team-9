@@ -74,7 +74,10 @@ _page = html.Div(
     id="hq-page",
     className="page",
     children=[
-        html.Section(id="hq-header", children=[html.H2("If you invested $100…")]),
+        html.Section(id="hq-header", children=[
+            html.H2("Accumulated Investment Returns"),
+            html.P("Interactive chart to explore how your investments would have grown over time. See the value of $100 invested on November 1, 1999 (or any custom start date) and track its growth through your chosen end date.")
+        ]),
         html.Section(
             id="hq-body",
             children=[
@@ -134,7 +137,7 @@ def update_chart(tickers, start_date, end_date, series_mode, log_value):
             x="date",
             y="val_100",
             color="symbol",
-            labels={"val_100": "Value of $100 ($)", "date": "date", "symbol": "Ticker"},
+            labels={"val_100": "Value of $100 (USD)", "date": "date", "symbol": "Ticker"},
             color_discrete_sequence=custom_colors,
         )
     else:
@@ -147,7 +150,7 @@ def update_chart(tickers, start_date, end_date, series_mode, log_value):
             x="date",
             y="norm",
             color="symbol",
-            labels={"norm": "Index ($100 start)", "date": "date", "symbol": "Ticker"},
+            labels={"norm": "Beginning Index from $100 (USD)", "date": "Date", "symbol": "Ticker"},
             color_discrete_sequence=custom_colors,
         )
 

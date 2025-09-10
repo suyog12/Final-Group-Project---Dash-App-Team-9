@@ -20,7 +20,7 @@ def layout():
                                 className="home-left",
                                 children=[
                                     html.H1("Change Your Stock Portfolio"),
-                                    html.H3("Learn from the past to predict the future"),
+                                    html.H3("Learn from the past to predict the future with A9 Solutions"),
                                     html.P(
                                         "We analyze historical trends across 100+ large companies "
                                         "and replay simple ‘what if’ scenarios so you can learn "
@@ -44,10 +44,11 @@ def layout():
                             ),
                         ],
                     ),
+                    html.Hr(),
                     html.Div(
                         children=[
                             html.P("In 2025, we decided that one of the main problems facing working professionals was that learning the details of the stock market took too long. We're here to help you navigate this tumultous market by guiding you through the ins and outs with stock analysis conducted by our professionals."),
-                            html.P("We have taken data from Microsoft and Apple, using [INSERT NAME] API, with more on the way. In order to make future trends more understandable, we have investigated and explained their historical trends in order to predict how their stock is likely to behave based on statistical analysis and current events."),
+                            html.P("We have taken data from Microsoft and Apple, using the reputable Alpha Vantage's Time Series Daily API, with more on the way. In order to make future trends more understandable, we have investigated and explained their historical trends in order to predict how their stock is likely to behave based on statistical analysis and current events."),
                             html.P("Sign up in order to access our growing library of visualizations for stock analysis and kick off your investment journey today."),
                             html.Div(
                                 className="home-cta",

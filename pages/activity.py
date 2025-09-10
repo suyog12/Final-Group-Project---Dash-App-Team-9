@@ -76,7 +76,7 @@ def layout():
                 className="page",
                 children=[
                     html.H2("Daily Trading Activity"),
-                    html.P("Interactive daily candlesticks with 20/50-day moving averages."),
+                    html.P("Interactive chart to explore how your investments would fluctuate day-to-day in price. Experience how they react to daily market swings, and visualize highs, lows, opens, and closes, using 20 day moving averages and 50 day moving averages.")
                 ],
             ),
             html.Section(

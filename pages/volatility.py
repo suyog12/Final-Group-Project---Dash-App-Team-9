@@ -53,7 +53,7 @@ controls = html.Div(id="vol-controls", children=[
 _page = html.Div(id="vol-page", children=[
     html.Section(id="vol-header", children=[
         html.H2("Volatility"),
-        html.P("30-day rolling annualized volatility (adjustable window)."),
+        html.P("Interactive chart to explore how your investments would face changing levels of risk over time. Experience how your investment is exposed to different levels of market uncertainty, and visualize how to balance growth against risk using rolling annualized volatility in an adjustable window."),
     ]),
     html.Section(id="vol-body", children=[
         html.Aside(id="vol-sidebar", children=[controls]),
@@ -103,7 +103,7 @@ def update_vol_chart(tickers, start_date, end_date, window):
     custom_colors = ["#2964b4", "#b24b7b"] # changes the colors of the graph
     fig = px.area(
         vol, x="date", y="roll_vol", color="symbol",
-        labels={"roll_vol": "Annualized Volatility", "date": "date", "symbol": "Ticker"},
+        labels={"roll_vol": "Annualized Volatility", "date": "Date", "symbol": "Ticker"},
         template="plotly_white", color_discrete_sequence=custom_colors,
     )
     fig.update_layout(
