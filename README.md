@@ -19,6 +19,10 @@ Render Link: https://final-group-project-dash-app-team-9.onrender.com
 ---
 
 
+## Data Source
+https://www.alphavantage.co/documentation/
+
+---
 
 ### Navigation & Access
 - **Home** with a short value proposition, clear “Login / Sign up” calls to action, and a **Know the Founders** section (group image + hover headshots).
