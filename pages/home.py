@@ -78,6 +78,16 @@ def layout():
                                              alt="Bryce headshot",
                                              className="founder-pop"),
                                 ],
+                            ),                            
+                            html.Div(
+                                className="founder-card",
+                                children=[
+                                    html.Strong("Suyog"),
+                                    html.P("Quant research & backtests."),
+                                    html.Img(src="/assets/images/founder-suyog.jpg",
+                                             alt="Suyog headshot",
+                                             className="founder-pop"),
+                                ],
                             ),
                             html.Div(
                                 className="founder-card",
@@ -86,16 +96,6 @@ def layout():
                                     html.P("Data modeling & infrastructure."),
                                     html.Img(src="/assets/images/founder-luke.jpg",
                                              alt="Luke headshot",
-                                             className="founder-pop"),
-                                ],
-                            ),
-                            html.Div(
-                                className="founder-card",
-                                children=[
-                                    html.Strong("Suyog"),
-                                    html.P("Quant research & backtests."),
-                                    html.Img(src="/assets/images/founder-suyog.jpg",
-                                             alt="Suyog headshot",
                                              className="founder-pop"),
                                 ],
                             ),

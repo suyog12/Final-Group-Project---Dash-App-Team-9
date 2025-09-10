@@ -13,7 +13,7 @@ def _hash_username(username: str) -> str:
     return sha256((username or "").strip().lower().encode("utf-8")).hexdigest()
 
 def create_user(username: str, password: str, dob_str: str) -> None:
-    """Create user with hashed username + hashed password. dob_str: 'MM-DD-YYYY'."""
+    """Create user with hashed username + hashed password. dob_str: 'YYYY-MM-DD'."""
     if not SessionLocal:
         raise AuthError("Database not configured.")
     if not username or not password or not dob_str:
@@ -21,7 +21,7 @@ def create_user(username: str, password: str, dob_str: str) -> None:
     try:
         dob = datetime.strptime(dob_str, "%Y-%m-%d").date()
     except ValueError:
-        raise AuthError("DOB must be MM-DD-YYYY.")
+        raise AuthError("DOB must be YYYY-MM-DD.")
 
     with SessionLocal() as db:
         u = User(
