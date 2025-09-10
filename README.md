@@ -14,7 +14,7 @@ The app uses historical market data from the Alpha Vantage API and presents it t
 
 ## Live / Demo
 
-Render Link 
+Render Link: https://final-group-project-dash-app-team-9.onrender.com
 
 ---
 
@@ -69,8 +69,8 @@ cd Final-Group-Project---Dash-App-Team-9
 pip install -r requirements.txt
 
 **3) Configure environment**
-ALPHAVANTAGE_API_KEY= 
-DATABASE_URL=mysql+pymysql://avnadmin:Password@mysql-3ef7137-wm-e4d2.i.aivencloud.com:20331/defaultdb?ssl=true
+ALPHAVANTAGE_API_KEY=
+DATABASE_URL=
 SECRET_KEY=
 
 **4) Run the app**
