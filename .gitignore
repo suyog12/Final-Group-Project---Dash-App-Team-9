@@ -33,6 +33,12 @@ build/
 dist/
 
 # --- App data / local artifacts ---
-data_cache/
+# Keep the folder, ignore everything inside...
+data_cache/*
+# ...except the CSVs you want to ship with the app and a folder placeholder
+!data_cache/*.csv
+!data_cache/.gitkeep
+
+# local HTML exports
 prices_aapl_msft.html
 vol_aapl_msft.html
