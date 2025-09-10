@@ -40,7 +40,7 @@ Render Link: https://final-group-project-dash-app-team-9.onrender.com
   - Weekend range breaks, unified hover, and a compact mode bar.
 
 - **Volatility** (`/volatility`)
-  - 30-day rolling **annualized volatility** (configurable window via slider).
+  - Rolling **annualized volatility** (configurable window via slider).
   - **Date range** picker + **ticker** multiselect.
   - Stacked area chart with a small preview (range slider) and unified hover.
   - Reuses the same return/volatility logic as the standalone script in the prompt.
