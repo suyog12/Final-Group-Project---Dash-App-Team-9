@@ -69,6 +69,7 @@ Render Link: https://final-group-project-dash-app-team-9.onrender.com
 pip install -r requirements.txt
 
 **3) Configure environment**
+
 ALPHAVANTAGE_API_KEY=
 
 DATABASE_URL=
