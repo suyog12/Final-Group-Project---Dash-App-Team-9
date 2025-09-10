@@ -70,7 +70,9 @@ pip install -r requirements.txt
 
 **3) Configure environment**
 ALPHAVANTAGE_API_KEY=
+
 DATABASE_URL=
+
 SECRET_KEY=
 
 **4) Run the app**
