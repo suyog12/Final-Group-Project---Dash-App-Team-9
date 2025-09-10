@@ -63,6 +63,7 @@ Render Link: https://final-group-project-dash-app-team-9.onrender.com
 
 **1) Clone and enter the repo**
 git clone https://github.com/suyog12/Final-Group-Project---Dash-App-Team-9.git
+
 cd Final-Group-Project---Dash-App-Team-9
 
 **2) Install Requirements**
